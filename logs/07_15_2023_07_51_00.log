@@ -1,0 +1,9 @@
+[2023-07-15 07:51:01,148] 19 root - INFO -Reading data from database: CreditDefaults and collection: CreditData
+[2023-07-15 07:51:08,779] 21 root - INFO -Found columns: Index(['_id', 'ID', 'LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE',
+       'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1',
+       'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6',
+       'PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6',
+       'default.payment.next.month'],
+      dtype='object')
+[2023-07-15 07:51:08,779] 23 root - INFO -Dropping column: _id
+[2023-07-15 07:51:08,788] 25 root - INFO -Rows and columns in df: (30000, 25)
