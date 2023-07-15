@@ -15,10 +15,10 @@ def requirement_file(path:str)->List[str]:
 
 HYPEN_DOT = '-e .'
 setup(
-    name='ML_Project',
+    name='Credit Defaults',
     version='0.0.1',
     author='Abhishek',
     author_email='abhishekravikumar24@gmail.com',
     packages=find_packages(),
-    install_requires=requirement_file('requirement.txt')
+    install_requires=requirement_file('requirements.txt')
 )

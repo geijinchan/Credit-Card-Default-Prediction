@@ -1,0 +1,7 @@
+pandas
+numpy
+dill
+Flask
+scikit-learn
+pymongo
+python-dotenv

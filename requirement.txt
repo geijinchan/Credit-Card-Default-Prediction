@@ -1,6 +1,0 @@
-pandas
-numpy
-dill
-Flask
-scikit-learn
--e .
