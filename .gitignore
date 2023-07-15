@@ -1,3 +1,19 @@
-.env
+# Ignore the artifact and logs folders
 artifact/
 logs/
+
+# Ignore specific files
+file.txt
+secret_key.txt
+
+# Ignore the .env file
+.env
+
+# Ignore all .csv files in the root directory
+*.csv
+
+# Ignore all .pyc files
+*.pyc
+
+# Ignore all files in the data directory
+data/*
