@@ -5,3 +5,4 @@ Flask
 scikit-learn
 pymongo
 python-dotenv
+PyYAML
