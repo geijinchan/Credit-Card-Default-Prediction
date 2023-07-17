@@ -40,6 +40,7 @@ class DataValidationConfig:
             self.data_validation_dir = os.path.join(training_pipeline_config.artifact_dir, "data_validation")
             self.report_file_path = os.path.join(self.data_validation_dir, "report.yaml")
             self.missing_threshold:float = 0.2
+            self.outlier_threshold:float = 0.3
             self.base_file_path = r"C:\Users\user\Desktop\Projects\Credit Card Default Prediction\data\card.csv"
         except Exception as e:
             raise CustomException(e, sys)
