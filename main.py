@@ -32,7 +32,7 @@ if __name__ == "__main__":
                                         test_path=data_ingestion_artifact.test_file_path
 )
 
-        # Model Training
+        # Model Trainings
         model_trainer_config = config_entity.ModelTrainerConfig(training_pipeline_config=training_pipeline_config)
         model_trainer = ModelTrainer(model_trainer_config=model_trainer_config,
                                      data_transformation_artifact=data_transformation_artifact)
