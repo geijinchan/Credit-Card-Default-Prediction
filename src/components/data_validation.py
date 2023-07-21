@@ -3,8 +3,7 @@ from src.exception import CustomException
 from src.logger import logging
 from scipy.stats import ks_2samp
 from typing import Optional
-import os
-import sys
+import os, sys
 import pandas as pd
 from src import utils
 import numpy as np
