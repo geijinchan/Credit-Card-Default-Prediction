@@ -10,6 +10,7 @@ src/config.py
 src/exception.py
 src/logger.py
 src/utils.py
+src/components/ModelPusher.py
 src/components/__init__.py
 src/components/data_ingestion.py
 src/components/data_transformation.py
@@ -19,4 +20,5 @@ src/entity/__init__.py
 src/entity/artifact_entity.py
 src/entity/config_entity.py
 src/pipeline/__init__.py
+src/pipeline/latest_files_function.py
 src/pipeline/predict_pipeline.py

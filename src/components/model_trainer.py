@@ -47,9 +47,9 @@ class ModelTrainer:
 
             logging.info("Model train started")
             model = self.train_model(X_train,y_train)
+            # After model training
             logging.info("Model train done")
-
-            
+            logging.info(f"Trained model: {model}")
 
             logging.info("Predicting on train set")
             y_pred_train = model.predict(X_train)

@@ -11,4 +11,6 @@ pandas
 PyYAML
 numpy
 scikit-learn
+Flask
+imblearn==0.0
 -e .

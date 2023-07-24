@@ -11,7 +11,9 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-from src.config import TARGET_COLUMN
+from imblearn.combine import SMOTETomek
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 class DataTransformation:
@@ -24,8 +26,8 @@ class DataTransformation:
     # Rest of the class code...
 
 
-
-    def get_data_tranformer_object(self):
+    @classmethod
+    def get_data_tranformer_object(cls)->Pipeline:
         try:
             '''
             This function is responsible for data transformation
@@ -99,35 +101,55 @@ class DataTransformation:
 
             train_df.drop(columns=['ID'], inplace=True)
             test_df.drop(columns=['ID'], inplace=True)
-            logging.info(f"ID columns dropper ")
-
-            target_column = "defaults"
+            logging.info(f"ID columns dropper {train_df.shape}")  # 24 features
             
             logging.info("Obtaining preprocessing object")
-            preprocessing_obj = self.get_data_tranformer_object()
+            
             target_column = "defaults"
 
-            input_feature_train_df = train_df.drop(columns=[target_column], axis=1)
-            target_feature_train_df = train_df[target_column].to_frame()
+            # Selecting feature for train dataframe
+            input_feature_train_df = train_df.drop(target_column,axis=1)
+            target_feature_train_df = train_df[target_column]
+            logging.info(f"Input features training {input_feature_train_df.shape}")
+            logging.info(f"Input features testing{input_feature_train_df.columns}")
 
-            input_feature_test_df = test_df.drop(columns=[target_column], axis=1)
-            target_feature_test_df = test_df[target_column].to_frame()
+            # Selecting target feature for train and test dataframe
+            input_feature_test_df = test_df.drop(target_column,axis=1)
+            target_feature_test_df = test_df[target_column]
+            logging.info(f"Input features testing{input_feature_test_df.shape}")
+            logging.info(f"Input features testing{input_feature_test_df.columns}")
 
+             # Transform on target columns
+            encoder = OneHotEncoder(sparse=False)
+            target_feature_train_arr = encoder.fit_transform(target_feature_train_df.values.reshape(-1, 1))
+            target_feature_test_arr = encoder.transform(target_feature_test_df.values.reshape(-1, 1))
 
+            # Transform on input features
             logging.info(f"Fit transform started for training")
-            input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
-            logging.info("Transform started for testing")
-            input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
+            transformation_pipeline = DataTransformation.get_data_tranformer_object()
+            transformation_pipeline.fit(input_feature_train_df)
             
-            target_feature_train_arr = np.array(target_feature_train_df).flatten()  # Flatten the target array
-            target_feature_test_arr = np.array(target_feature_test_df).flatten()
+            input_feature_train_arr = transformation_pipeline.transform(input_feature_train_df)
+            input_feature_test_arr = transformation_pipeline.transform(input_feature_test_df)
+            logging.info(f"after transformation columns are {input_feature_train_arr}")
 
-            train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_arr)]
-            test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_arr)]
+            smt = SMOTETomek(random_state=42)
+            logging.info(f"Before resampling in training set Input: {input_feature_train_arr.shape} Target:{target_feature_train_arr.shape}")
+            input_feature_train_arr, target_feature_train_arr = smt.fit_resample(input_feature_train_arr, target_feature_train_arr)
+            logging.info(f"After resampling in training set Input: {input_feature_train_arr.shape} Target:{target_feature_train_arr.shape}")
+            
+            logging.info(f"Before resampling in testing set Input: {input_feature_test_arr.shape} Target:{target_feature_test_arr.shape}")
+            input_feature_test_arr, target_feature_test_arr = smt.fit_resample(input_feature_test_arr, target_feature_test_arr)
+            logging.info(f"After resampling in testing set Input: {input_feature_test_arr.shape} Target:{target_feature_test_arr.shape}")
+
+
+            # Combine input features and encoded target columns
+            train_arr = np.c_[input_feature_train_arr, target_feature_train_arr]
+            test_arr = np.c_[input_feature_test_arr, target_feature_test_arr]
 
             utils.save_object(
                 file_path=self.data_transformation_config.transform_object_path,
-                obj=preprocessing_obj
+                obj=transformation_pipeline
             )
             
             utils.save_numpy_array_data(file_path=self.data_transformation_config.transformed_train_path,
@@ -135,12 +157,15 @@ class DataTransformation:
 
             utils.save_numpy_array_data(file_path=self.data_transformation_config.transformed_test_path,
                                         array=test_arr)
+            
+            utils.save_object(file_path=self.data_transformation_config.target_encoder_path,
+            obj=encoder)
         
             data_transformation_artifact = artifact_entity.DataTransformationArtifact(
                 transform_object_path = self.data_transformation_config.transform_object_path,
                 transformed_train_path = self.data_transformation_config.transformed_train_path,
                 transformed_test_path = self.data_transformation_config.transformed_test_path,
-                
+                target_encoder_path = self.data_transformation_config.target_encoder_path
             )
             logging.info("Done and check the transformer.pkl file in the artifact direct")
             return data_transformation_artifact

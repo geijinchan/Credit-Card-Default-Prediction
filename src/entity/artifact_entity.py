@@ -15,6 +15,7 @@ class DataTransformationArtifact:
     transform_object_path:str
     transformed_train_path:str
     transformed_test_path:str
+    target_encoder_path:str
 
 @dataclass
 class ModelTrainerArtifact:
@@ -28,5 +29,6 @@ class ModelEvaluationArtifact:
 
 @dataclass
 class ModelPusherArtifact:
-    # Define properties for model pusher artifact
-    pass
+    latest_transformer_path:str 
+    latest_model_path:str
+    latest_encoder_path:str

@@ -5,7 +5,9 @@ from src.components.data_ingestion import DataIngestion
 from src.components.data_validation import DataValidation
 from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
-from src import utils
+from src.components.ModelPusher import ModelPusher
+
+
 
 if __name__ == "__main__":
     try:
@@ -37,6 +39,15 @@ if __name__ == "__main__":
         model_trainer = ModelTrainer(model_trainer_config=model_trainer_config,
                                      data_transformation_artifact=data_transformation_artifact)
         model_trainer_artifact = model_trainer.initiate_model_trainer()
+
+        # Model Pusher
+        model_pusher_config = config_entity.ModelPusherConfig(training_pipeline_config)
+        
+        model_pusher = ModelPusher(model_pusher_config=model_pusher_config, 
+                data_transformation_artifact=data_transformation_artifact,
+                model_trainer_artifact=model_trainer_artifact)
+
+        model_pusher_artifact = model_pusher.initiate_model_pusher()
 
     except Exception as e:
         raise CustomException(e, sys)
