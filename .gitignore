@@ -1,6 +1,7 @@
 # Ignore the artifact and logs folders
 artifact/
 logs/
+saved_models/
 
 # Ignore specific files
 file.txt
