@@ -2,123 +2,254 @@
 <html>
 <head>
     <title>Default Payment Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            color: #007bff;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Default Payment Prediction</h1>
-    <form method="POST" action="/predict">
-        <label for="ID">ID:</label>
-        <input type="number" name="ID" id="ID" required><br><br>
+    <div class="container">
+        <form method="POST" action="/predict">
+            <div class="form-field">
+                <label for="ID">ID:</label>
+                <input type="number" name="ID" id="ID" required>
+            </div>
 
-        <label for="LIMIT_BAL">Credit Limit (NT dollars):</label>
-        <input type="number" name="LIMIT_BAL" id="LIMIT_BAL" required><br><br>
+            <div class="form-field">
+                <label for="LIMIT_BAL">Credit Limit (NT dollars):</label>
+                <input type="number" name="LIMIT_BAL" id="LIMIT_BAL" required>
+            </div>
 
-        <label for="SEX">Gender:</label>
-        <select name="SEX" id="SEX" required>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-        </select><br><br>
+            <div class="form-field">
+                <label for="SEX">Gender:</label>
+                <select name="SEX" id="SEX" required>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                </select>
+            </div>
 
-        <label for="EDUCATION">Education:</label>
-        <select name="EDUCATION" id="EDUCATION" required>
-            <option value="1">Graduate School</option>
-            <option value="2">University</option>
-            <option value="3">High School</option>
-            <option value="0">Others</option>
-        </select><br><br>
+            <div class="form-field">
+                <label for="EDUCATION">Education:</label>
+                <select name="EDUCATION" id="EDUCATION" required>
+                    <option value="1">Graduate School</option>
+                    <option value="2">University</option>
+                    <option value="3">High School</option>
+                    <option value="0">Others</option>
+                </select>
+            </div>
 
-        <label for="MARRIAGE">Marital Status:</label>
-        <select name="MARRIAGE" id="MARRIAGE" required>
-            <option value="1">Married</option>
-            <option value="2">Single</option>
-            <option value="3">Divorce</option>
-            <option value="0">Others</option>
-        </select><br><br>
+            <div class="form-field">
+                <label for="MARRIAGE">Marital Status:</label>
+                <select name="MARRIAGE" id="MARRIAGE" required>
+                    <option value="1">Married</option>
+                    <option value="2">Single</option>
+                    <option value="3">Divorce</option>
+                    <option value="0">Others</option>
+                </select>
+            </div>
 
-        <label for="AGE">Age:</label>
-        <input type="number" name="AGE" id="AGE" required><br><br>
+            <div class="form-field">
+                <label for="AGE">Age:</label>
+                <input type="number" name="AGE" id="AGE" required>
+            </div>
 
-        <label for="PAY_0">Repayment Status in September:</label>
-        <input type="number" name="PAY_0" id="PAY_0" required><br><br>
+            <div class="form-field">
+                <label for="PAY_0">Repayment Status in September:</label>
+                <input type="number" name="PAY_0" id="PAY_0" required>
+            </div>
 
-        <label for="PAY_2">Repayment Status in August:</label>
-        <input type="number" name="PAY_2" id="PAY_2" required><br><br>
+            <div class="form-field">
+                <label for="PAY_2">Repayment Status in August:</label>
+                <input type="number" name="PAY_2" id="PAY_2" required>
+            </div>
 
-        <label for="PAY_3">Repayment Status in July:</label>
-        <input type="number" name="PAY_3" id="PAY_3" required><br><br>
+            <div class="form-field">
+                <label for="PAY_3">Repayment Status in July:</label>
+                <input type="number" name="PAY_3" id="PAY_3" required>
+            </div>
 
-        <label for="PAY_4">Repayment Status in June:</label>
-        <input type="number" name="PAY_4" id="PAY_4" required><br><br>
+            <div class="form-field">
+                <label for="PAY_4">Repayment Status in June:</label>
+                <input type="number" name="PAY_4" id="PAY_4" required>
+            </div>
 
-        <label for="PAY_5">Repayment Status in May:</label>
-        <input type="number" name="PAY_5" id="PAY_5" required><br><br>
+            <div class="form-field">
+                <label for="PAY_5">Repayment Status in May:</label>
+                <input type="number" name="PAY_5" id="PAY_5" required>
+            </div>
 
-        <label for="PAY_6">Repayment Status in April:</label>
-        <input type="number" name="PAY_6" id="PAY_6" required><br><br>
+            <div class="form-field">
+                <label for="PAY_6">Repayment Status in April:</label>
+                <input type="number" name="PAY_6" id="PAY_6" required>
+            </div>
 
-        <label for="BILL_AMT1">Amount of Bill Statement in September (NT dollars):</label>
-        <input type="number" name="BILL_AMT1" id="BILL_AMT1" required><br><br>
+            <div class="form-field">
+                <label for="BILL_AMT1">Amount of Bill Statement in September (NT dollars):</label>
+                <input type="number" name="BILL_AMT1" id="BILL_AMT1" required>
+            </div>
 
-        <label for="BILL_AMT2">Amount of Bill Statement in August (NT dollars):</label>
-        <input type="number" name="BILL_AMT2" id="BILL_AMT2" required><br><br>
+            <div class="form-field">
+                <label for="BILL_AMT2">Amount of Bill Statement in August (NT dollars):</label>
+                <input type="number" name="BILL_AMT2" id="BILL_AMT2" required>
+            </div>
 
-        <label for="BILL_AMT3">Amount of Bill Statement in July (NT dollars):</label>
-        <input type="number" name="BILL_AMT3" id="BILL_AMT3" required><br><br>
+            <div class="form-field">
+                <label for="BILL_AMT3">Amount of Bill Statement in July (NT dollars):</label>
+                <input type="number" name="BILL_AMT3" id="BILL_AMT3" required>
+            </div>
 
-        <label for="BILL_AMT4">Amount of Bill Statement in June (NT dollars):</label>
-        <input type="number" name="BILL_AMT4" id="BILL_AMT4" required><br><br>
+            <div class="form-field">
+                <label for="BILL_AMT4">Amount of Bill Statement in June (NT dollars):</label>
+                <input type="number" name="BILL_AMT4" id="BILL_AMT4" required>
+            </div>
 
-        <label for="BILL_AMT5">Amount of Bill Statement in May (NT dollars):</label>
-        <input type="number" name="BILL_AMT5" id="BILL_AMT5" required><br><br>
+            <div class="form-field">
+                <label for="BILL_AMT5">Amount of Bill Statement in May (NT dollars):</label>
+                <input type="number" name="BILL_AMT5" id="BILL_AMT5" required>
+            </div>
 
-        <label for="BILL_AMT6">Amount of Bill Statement in April (NT dollars):</label>
-        <input type="number" name="BILL_AMT6" id="BILL_AMT6" required><br><br>
+            <div class="form-field">
+                <label for="BILL_AMT6">Amount of Bill Statement in April (NT dollars):</label>
+                <input type="number" name="BILL_AMT6" id="BILL_AMT6" required>
+           
+            </div>
 
-        <label for="PAY_AMT1">Amount of Previous Payment in September (NT dollars):</label>
-        <input type="number" name="PAY_AMT1" id="PAY_AMT1" required><br><br>
+            <div class="form-field">
+                <label for="PAY_AMT1">Amount of Previous Payment in September (NT dollars):</label>
+                <input type="number" name="PAY_AMT1" id="PAY_AMT1" required>
+            </div>
 
-        <label for="PAY_AMT2">Amount of Previous Payment in August (NT dollars):</label>
-        <input type="number" name="PAY_AMT2" id="PAY_AMT2" required><br><br>
+            <div class="form-field">
+                <label for="PAY_AMT2">Amount of Previous Payment in August (NT dollars):</label>
+                <input type="number" name="PAY_AMT2" id="PAY_AMT2" required>
+            </div>
 
-        <label for="PAY_AMT3">Amount of Previous Payment in July (NT dollars):</label>
-        <input type="number" name="PAY_AMT3" id="PAY_AMT3" required><br><br>
+            <div class="form-field">
+                <label for="PAY_AMT3">Amount of Previous Payment in July (NT dollars):</label>
+                <input type="number" name="PAY_AMT3" id="PAY_AMT3" required>
+            </div>
 
-        <label for="PAY_AMT4">Amount of Previous Payment in June (NT dollars):</label>
-        <input type="number" name="PAY_AMT4" id="PAY_AMT4" required><br><br>
+            <div class="form-field">
+                <label for="PAY_AMT4">Amount of Previous Payment in June (NT dollars):</label>
+                <input type="number" name="PAY_AMT4" id="PAY_AMT4" required>
+            </div>
 
-        <label for="PAY_AMT5">Amount of Previous Payment in May (NT dollars):</label>
-        <input type="number" name="PAY_AMT5" id="PAY_AMT5" required><br><br>
+            <div class="form-field">
+                <label for="PAY_AMT5">Amount of Previous Payment in May (NT dollars):</label>
+                <input type="number" name="PAY_AMT5" id="PAY_AMT5" required>
+            </div>
 
-        <label for="PAY_AMT6">Amount of Previous Payment in April (NT dollars):</label>
-        <input type="number" name="PAY_AMT6" id="PAY_AMT6" required><br><br>
+            <div class="form-field">
+                <label for="PAY_AMT6">Amount of Previous Payment in April (NT dollars):</label>
+                <input type="number" name="PAY_AMT6" id="PAY_AMT6" required>
+            </div>
 
-        <input type="submit" value="Predict">
-    </form>
-    {% if results %}
-    <h2>Predicted Results:</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Index</th>
-                <th>Prediction</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for prediction in results %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>
-                    {% if prediction == 1 %}
-                        Default Payment
-                    {% elif prediction == 0 %}
-                        No Default Payment
-                    {% else %}
-                        Unknown
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% endif %}
+            <button type="submit" class="submit-btn">Predict</button>
+        </form>
+        {% if results %}
+        <h2>Predicted Results:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Prediction</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prediction in results %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>
+                        {% if prediction == 1 %}
+                            Default Payment
+                        {% elif prediction == 0 %}
+                            No Default Payment
+                        {% else %}
+                            Unknown
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
 </body>
 </html>
