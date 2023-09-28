@@ -1,58 +1,168 @@
-﻿# Credit Card Default Prediction
+# End-to-end-Machine-Learning-Project-with-MLflow
 
-A machine learning project to predict credit card default payment using Python.
 
-## Description
+## Workflows
 
-The Credit Card Default Prediction project is a machine learning-based system to predict whether a credit cardholder is likely to default on their payments. The project is built using Python and utilizes various libraries for data processing, model training, and prediction.
+1. Update config.yaml
+2. Update schema.yaml
+3. Update params.yaml
+4. Update the entity
+5. Update the configuration manager in src config
+6. Update the components
+7. Update the pipeline 
+8. Update the main.py
+9. Update the app.py
 
-## Installation
 
-To install the necessary dependencies, run the following command:
+
+# How to run?
+### STEPS:
+
+Clone the repository
 
 ```bash
+https://github.com/geijinchan/Credit-Card-Default-Prediction
+```
+### STEP 01- Create a conda environment after opening the repository
+
+```bash
+conda create -n credit python=3.8 -y
+```
+
+```bash
+conda activate credit
+```
+
+
+### STEP 02- install the requirements
+```bash
 pip install -r requirements.txt
-Usage
-To run the web application:
-bash
-Copy code
+```
+
+
+```bash
+# Finally run the following command
 python app.py
-To use the RESTful API for predictions, make a POST request to the /predict endpoint with the required data.
-API Endpoints
-/predict: Predict credit card default for new data.
-Project Structure
-bash
-Copy code
-├── app.py                  # Main application file
-├── src/                    # Source code directory
-│   ├── pipeline/           # Prediction pipeline components
-│   ├── data/                # Data files
-│   ├── models/              # Saved models and artifacts
-│   └── utils/               # Utility functions
-├── tests/                   # Unit tests
-├── requirements.txt         # Project dependencies
-├── Dockerfile               # Docker configuration
-├── .gitignore               # Git ignore rules
-└── README.md                # Project documentation
-Model Training
-The model was trained using a dataset containing historical credit cardholder data. The data was preprocessed to handle missing values and encode categorical variables. The machine learning algorithm used was a random forest classifier. The trained model was saved and used for predictions.
+```
 
-Technologies Used
-Python
-Flask (for web application)
-scikit-learn (for machine learning)
-Pandas (for data manipulation)
-Docker (for containerization)
-Contributing
-Contributions to the project are welcome. For bug fixes and feature requests, please open an issue. For code contributions, please fork the repository and submit a pull request for review.
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-Contact
-For questions or inquiries, please contact abhishekravikumar24@gmail.com.
+Now,
+```bash
+open up you local host and port
+```
 
 
 
+## MLflow
+
+[Documentation](https://mlflow.org/docs/latest/index.html)
+
+
+##### cmd
+- mlflow ui
+
+### dagshub
+[dagshub](https://dagshub.com/)
+
+MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/End-to-end-Machine-Learning-Project-with-MLflow.mlflow \
+MLFLOW_TRACKING_USERNAME=entbappy \
+MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0 \
+python script.py
+
+Run this to export as env variables:
+
+```bash
+
+export MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/End-to-end-Machine-Learning-Project-with-MLflow.mlflow
+
+export MLFLOW_TRACKING_USERNAME=entbappy 
+
+export MLFLOW_TRACKING_PASSWORD=6824692c47a369aa6f9eac5b10041d5c8edbcef0
+
+```
+
+
+
+# AWS-CICD-Deployment-with-Github-Actions
+
+## 1. Login to AWS console.
+
+## 2. Create IAM user for deployment
+
+	#with specific access
+
+	1. EC2 access : It is virtual machine
+
+	2. ECR: Elastic Container registry to save your docker image in aws
+
+
+	#Description: About the deployment
+
+	1. Build docker image of the source code
+
+	2. Push your docker image to ECR
+
+	3. Launch Your EC2 
+
+	4. Pull Your image from ECR in EC2
+
+	5. Lauch your docker image in EC2
+
+	#Policy:
+
+	1. AmazonEC2ContainerRegistryFullAccess
+
+	2. AmazonEC2FullAccess
+
+	
+## 3. Create ECR repo to store/save docker image
+    - Save the URI: 223182486379.dkr.ecr.eu-north-1.amazonaws.com/ml_credit
+
+	
+## 4. Create EC2 machine (Ubuntu) 
+
+## 5. Open EC2 and Install docker in EC2 Machine:
+	
+	
+	#optinal
+
+	sudo apt-get update -y
+
+	sudo apt-get upgrade
+	
+	#required
+
+	curl -fsSL https://get.docker.com -o get-docker.sh
+
+	sudo sh get-docker.sh
+
+	sudo usermod -aG docker ubuntu
+
+	newgrp docker
+	
+# 6. Configure EC2 as self-hosted runner:
+    setting>actions>runner>new self hosted runner> choose os> then run command one by one
+
+
+# 7. Setup github secrets:
+
+    AWS_ACCESS_KEY_ID=
+
+    AWS_SECRET_ACCESS_KEY=
+
+    AWS_REGION = us-east-1
+
+    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
+
+    ECR_REPOSITORY_NAME = simple-app
+
+
+
+
+## About MLflow 
+MLflow
+
+ - Its Production Grade
+ - Trace all of your expriements
+ - Logging & tagging your model
 
 

@@ -7,7 +7,8 @@ from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
 
 access_key = os.getenv("MONGODB_ACCESS_KEY")
-client = pymongo.MongoClient(f"mongodb+srv://abhishekravikumar24:{access_key}@creditcarddefaults.ve7w8iy.mongodb.net")
+client = pymongo.MongoClient(f"mongodb+srv://credit:{access_key}@cluster0.gmfqdyg.mongodb.net")
+
 DATA_FILE_PATH = r"C:\Users\user\Desktop\Projects\Credit Card Default Prediction\data\card.csv"
 DATABASE_NAME = "CreditDefaults"
 COLLECTION_NAME = "CreditData"
