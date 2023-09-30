@@ -1,0 +1,38 @@
+/* Add your custom CSS styles here */
+
+/* Hero Section Styles */
+.hero {
+    background-color: #f8f9fa;
+    padding: 100px 0;
+}
+
+.hero h1 {
+    font-size: 36px;
+}
+
+/* Features Section Styles */
+.features {
+    background-color: #fff;
+    padding: 50px 0;
+}
+
+.feature {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.feature i {
+    font-size: 36px;
+    color: #007bff;
+}
+
+.feature h3 {
+    margin-top: 20px;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+}

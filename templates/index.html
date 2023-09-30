@@ -1,1 +1,115 @@
-<h1> Welcome to the home page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add your custom CSS -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add custom styles for the header -->
+    <style>
+        /* Header styling */
+        .header {
+            background-color: #007bff; /* Blue background color */
+            color: #fff; /* White text color */
+            padding: 20px 0; /* Top and bottom padding */
+        }
+
+        .header h1 {
+            font-size: 2.5rem; /* Larger font size */
+            font-weight: bold; /* Bold text */
+        }
+
+        .header p {
+            font-size: 1.25rem; /* Larger font size for the description */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h1>Credit Card Fraud Detection</h1>
+    <!-- Add navigation links here if needed -->
+</nav>
+
+<!-- Hero Section (Header) -->
+<section class="header text-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4">Protecting Your Financial Security</h1>
+                <p class="lead">Utilizing Advanced Machine Learning Algorithms</p>
+                <a href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" class="btn btn-primary btn-lg">Learn More</a>
+            </div>
+            <div class="col-lg-6">
+                <!-- Add an image or illustration here -->
+                <img src="https://camo.githubusercontent.com/37c5dfc561cbb402706d503622713e864582845187fa9f97800f5751320671b3/68747470733a2f2f65787465726e616c2d636f6e74656e742e6475636b6475636b676f2e636f6d2f69752f3f753d687474707325334125324625324661692d6a6f75726e65792e636f6d25324677702d636f6e74656e7425324675706c6f61647325324632303139253246303625324666726175642d454d562d636869702d6372656469742d636172642e6a706726663d31266e6f66623d31" alt="Credit Card" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Form Section -->
+<section class="form text-center py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <h2 class="display-5">Let's Train Our Model</h2>
+                
+                <!-- Train Model Button -->
+                <form method="POST" action="/train">
+                    <button type="submit" class="btn btn-success btn-lg" name="action" value="train">Train Model</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features text-center py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="feature">
+                    <!-- Add a feature icon -->
+                    <i class="fas fa-shield-alt fa-4x mb-3"></i>
+                    <h3 class="h4">Security</h3>
+                    <p class="text-muted">Our system uses state-of-the-art machine learning algorithms to detect fraudulent transactions.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature">
+                    <!-- Add a feature icon -->
+                    <i class="fas fa-lock fa-4x mb-3"></i>
+                    <h3 class="h4">Privacy</h3>
+                    <p class="text-muted">Your personal and financial information is kept safe and confidential.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature">
+                    <!-- Add a feature icon -->
+                    <i class="fas fa-globe fa-4x mb-3"></i>
+                    <h3 class="h4">Global Reach</h3>
+                    <p class="text-muted">We protect cardholders worldwide, ensuring peace of mind wherever you are.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer text-center py-3">
+    <div class="container">
+        <p class="text-muted">&copy; 2023 Credit Card Fraud Detection. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Add Bootstrap JavaScript and any custom JavaScript scripts here -->
+
+</body>
+</html>

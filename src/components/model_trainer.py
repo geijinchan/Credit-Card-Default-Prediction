@@ -15,6 +15,7 @@ from sklearn.metrics import accuracy_score, precision_score,recall_score,f1_scor
 class ModelTrainer:
     def __init__(self, model_trainer_config: config_entity.ModelTrainerConfig,
                  data_transformation_artifact: artifact_entity.DataTransformationArtifact):
+            logging.info(f"{'>>' * 20} Model Trainer {'<<' * 20}")
             try:
                 self.model_trainer_config = model_trainer_config
                 self.data_transformation_artifact = data_transformation_artifact

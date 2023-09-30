@@ -12,6 +12,7 @@ class ModelPusher:
     def __init__(self, model_pusher_config: config_entity.ModelPusherConfig,
                  data_transformation_artifact: artifact_entity.DataTransformationArtifact,
                  model_trainer_artifact: artifact_entity.ModelTrainerArtifact):
+        logging.info(f"{'>>' * 20} Model Pusher {'<<' * 20}")
         try:
             logging.info(f"{'>>'*20} Data Transformation {'<<'*20}")
             self.model_pusher_config = model_pusher_config

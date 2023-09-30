@@ -22,3 +22,4 @@ src/entity/config_entity.py
 src/pipeline/__init__.py
 src/pipeline/latest_files_function.py
 src/pipeline/predict_pipeline.py
+src/pipeline/training_pipeline.py

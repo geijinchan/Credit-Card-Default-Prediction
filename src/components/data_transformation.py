@@ -19,6 +19,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 class DataTransformation:
     def __init__(self, data_transformation_config: config_entity.DataTransformationConfig,
                  data_ingestion_artifact: artifact_entity.DataIngestionArtifact):
+        logging.info(f"{'>>' * 20} Data Transformation {'<<' * 20}")
         self.data_transformation_config = data_transformation_config
         self.data_ingestion_artifact = data_ingestion_artifact
         # Add any other initialization code here
@@ -133,7 +134,7 @@ class DataTransformation:
             input_feature_test_arr = transformation_pipeline.transform(input_feature_test_df)
             logging.info(f"after transformation columns are {input_feature_train_arr}")
 
-            smt = SMOTETomek(random_state=42)
+            smt = SMOTETomek(random_state=42,n_jobs=1)
             logging.info(f"Before resampling in training set Input: {input_feature_train_arr.shape} Target:{target_feature_train_arr.shape}")
             input_feature_train_arr, target_feature_train_arr = smt.fit_resample(input_feature_train_arr, target_feature_train_arr)
             logging.info(f"After resampling in training set Input: {input_feature_train_arr.shape} Target:{target_feature_train_arr.shape}")
