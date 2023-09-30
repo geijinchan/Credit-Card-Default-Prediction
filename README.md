@@ -163,6 +163,6 @@ MLflow
 
  - Its Production Grade.
  - Trace all of your expriements.
- -  Logging & tagging your model.
+ - Logging & tagging your model.
 
 
