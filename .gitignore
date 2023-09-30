@@ -2,6 +2,7 @@
 artifact/
 logs/
 saved_models/
+credit/
 
 # Ignore specific files
 file.txt
