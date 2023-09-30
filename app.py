@@ -6,7 +6,7 @@ def run_main():
 
 def run_app():
     # Calling app.py using subprocess
-    subprocess.run(['python', 'application.py'], check=True)
+    subprocess.run(['python', 'run_locally.py'], check=True)
 
 if __name__ == '__main__':
     run_main()
